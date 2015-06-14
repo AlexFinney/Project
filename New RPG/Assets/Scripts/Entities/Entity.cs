@@ -34,4 +34,25 @@ public abstract class Entity : MonoBehaviour {
 	}	
 
 	protected abstract void die();
+
+	public void applyDamage(int weaponDamage, Entity attacker){
+
+		int myAgilRoll = Random.Range(0, agilityLvl + 1);
+		int attackerRoll = Random.Range (0, attacker.attackLevel + 1);
+
+		if(attackerRoll * .5 >= myAgilRoll){
+			int damage = (int)(weaponDamage + .5 * attacker.strengthLvl);
+			damage -= Random.Range (0, defenseLvl + 1);
+			curHealth -= damage;
+			Debug.Log("Hit for " + damage + "! " + curHealth + " health left!");
+			if(curHealth < 0){
+				curHealth = 0;
+				die();
+			}
+		}else{
+			Debug.Log("Dodged! Attacker rolled a " + attackerRoll + ", I rolled a " + myAgilRoll);
+		}
+
+
+	}
 }

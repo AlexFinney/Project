@@ -10,7 +10,7 @@ public class SmallSpider : HostileMob {
 		strengthLvl = 1;
 		agilityLvl = 2;
 		secondsToRegain1HP = 10;
-		maxHealth = curHealth = 6;
+		maxHealth = curHealth = 12;
 		attackTimer = timeToReAttack = 2.0f;
 	}
 	
@@ -21,6 +21,6 @@ public class SmallSpider : HostileMob {
 
 	protected override void die ()
 	{
-		GameObject.Destroy (this);
+		Destroy (gameObject);
 	}
 }

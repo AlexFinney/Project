@@ -5,11 +5,12 @@ public class Player : Entity{
 
 	private int exp = 0;
 
-	AbstractMeleeWeapon equippedMeleeWeapon;
+	public AbstractMeleeWeapon equippedMeleeWeapon;
 	float attackTimer;
 	float timeToReAttack;
 	bool isAttacking = false;
 	Animator animator;
+	MeleeAttack meleeAttack;
 
 	void Start(){
 		curHealth = maxHealth = 10;
@@ -17,9 +18,9 @@ public class Player : Entity{
 		strengthLvl = 3;
 		defenseLvl = 3;
 		agilityLvl = 1;
-		equippedMeleeWeapon = null;
 		timeToReAttack = .1f;
 		animator = GetComponent<Animator> ();
+		meleeAttack = GetComponentInChildren<MeleeAttack> ();
 	}
 
 	void Update(){
@@ -30,13 +31,25 @@ public class Player : Entity{
 			if(isAttacking){
 				isAttacking = false;
 				animator.SetBool ("isAttacking", false);
+				if(equippedMeleeWeapon != null)
+					equippedMeleeWeapon.deactivate();
 		}
 
 		if (Input.GetKeyDown(KeyCode.Space)){
 			if(attackTimer <= 0){
-				isAttacking = true;
-				attack ();
-				attackTimer = timeToReAttack;
+				if(equippedMeleeWeapon == null){
+					attackTimer = 1.0f;
+					isAttacking = true;
+					meleeAttack.attack();
+				}
+				else{
+					attackTimer = equippedMeleeWeapon.getSpeed();
+					isAttacking = true;
+					meleeAttack.attack();
+					equippedMeleeWeapon.setPositionAndRotation(GetComponent<Movement>().getDirectionFacing());
+					equippedMeleeWeapon.activate();
+
+				}
 			}
 		} 
 	}
@@ -56,25 +69,10 @@ public class Player : Entity{
 		return oldWeapon;
 	}
 
-
-	private void attack(){
-		Debug.Log("attack");
-		animator.SetBool ("isAttacking", true);
-		switch (GetComponent<Movement>().getDirectionFacing()) {
-			case "up":
-				animator.SetInteger ("directionFacing", 2);
-			break;
-				case "down":
-			animator.SetInteger ("directionFacing", 0);
-			break;
-			case "left":
-				animator.SetInteger ("directionFacing", 1);
-			break;
-			case "right":
-				animator.SetInteger ("directionFacing", 3);
-			break;
-		}
+	public AbstractMeleeWeapon getEquippedMeleeWeapon(){
+		return equippedMeleeWeapon;
 	}
+
 	protected override void die(){
 		transform.position = new Vector3 (0,0,0);
 		Debug.Log ("You have died :(");

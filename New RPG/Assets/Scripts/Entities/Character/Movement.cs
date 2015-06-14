@@ -4,8 +4,8 @@ using System.Collections;
 public class Movement : MonoBehaviour {
 
 
-	float speed = .8f;
-	string directionFacing;
+	float speed = 1f;
+	int directionFacing;
 	Rigidbody2D body;
 	Animator animator;
 	Vector2 movementVec;
@@ -21,23 +21,23 @@ public class Movement : MonoBehaviour {
 	void Update () {
 		if (Input.GetKey (KeyCode.S)) {
 			if (!Input.GetKey (KeyCode.W)){
-				directionFacing = "down";
+				directionFacing = 0;
 			}
 
 		}else if (Input.GetKey (KeyCode.W)) {
 			if (!Input.GetKey (KeyCode.S)) {
-				directionFacing = "up";
+				directionFacing = 2;
 			}
 		}
 
 		if (Input.GetKey (KeyCode.A)) {
 			if (!Input.GetKey (KeyCode.D)) {
-				directionFacing = "left";
+				directionFacing = 1;
 			}
 
 		}else if (Input.GetKey (KeyCode.D)) {
 			if (!Input.GetKey (KeyCode.A)) {
-				directionFacing = "right";
+				directionFacing = 3;
 			}
 		}
 
@@ -90,7 +90,7 @@ public class Movement : MonoBehaviour {
 		body.position =  (body.position + diff);	
 	}
 	
-	public string getDirectionFacing(){
+	public int getDirectionFacing(){
 		return directionFacing;
 	}
 }

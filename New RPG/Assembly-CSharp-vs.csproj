@@ -47,12 +47,15 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Camera\SmoothCamera.cs" />
+     <Compile Include="Assets\Scripts\Entities\Character\MeleeAttack.cs" />
      <Compile Include="Assets\Scripts\Entities\Character\Movement.cs" />
      <Compile Include="Assets\Scripts\Entities\Character\Player.cs" />
      <Compile Include="Assets\Scripts\Entities\Entity.cs" />
      <Compile Include="Assets\Scripts\Entities\Mobs\Hostile\AI\BasicHostileMobAI.cs" />
      <Compile Include="Assets\Scripts\Entities\Mobs\Hostile\HostileMob.cs" />
      <Compile Include="Assets\Scripts\Entities\Mobs\Hostile\SmallSpider.cs" />
+     <Compile Include="Assets\Scripts\GUI\FloatingMessage\FloatingMessage.cs" />
+     <Compile Include="Assets\Scripts\GUI\FloatingMessage\MessageManager.cs" />
      <Compile Include="Assets\Scripts\Items\AbstractItem.cs" />
      <Compile Include="Assets\Scripts\Items\Weapons\AbstractMeleeWeapon.cs" />
      <Compile Include="Assets\Scripts\Items\Weapons\Melee\CopperGreatSword.cs" />
