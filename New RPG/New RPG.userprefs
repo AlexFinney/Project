@@ -1,12 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\FloatingMessage\MessageManager.cs">
-    <Files>
-      <File FileName="Assets\Scripts\Entities\Entity.cs" Line="43" Column="26" />
-      <File FileName="Assets\Scripts\GUI\FloatingMessage\FloatingMessage.cs" Line="35" Column="22" />
-      <File FileName="Assets\Scripts\GUI\FloatingMessage\MessageManager.cs" Line="17" Column="3" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -21,6 +21,9 @@ public class SmallSpider : HostileMob {
 
 	protected override void die ()
 	{
+		if (deadMob != null) {
+			GameObject go = (GameObject)GameObject.Instantiate(deadMob, gameObject.transform.position, gameObject.transform.rotation);
+		}
 		Destroy (gameObject);
 	}
 }

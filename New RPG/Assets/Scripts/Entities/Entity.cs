@@ -40,19 +40,24 @@ public abstract class Entity : MonoBehaviour {
 		int myAgilRoll = Random.Range(0, agilityLvl + 1);
 		int attackerRoll = Random.Range (0, attacker.attackLevel + 1);
 
-		if(attackerRoll * .5 >= myAgilRoll){
-			int damage = (int)(weaponDamage + .5 * attacker.strengthLvl);
-			damage -= Random.Range (0, defenseLvl + 1);
+		if(attackerRoll * 1.5 >= myAgilRoll){
+			GetComponent<AudioSource>().Play();
+			int bonus = attacker.strengthLvl + 8;
+			int maxDamage = Random.Range(1,bonus);
+			int damage = Random.Range(0, weaponDamage) + (int)1.5 * attacker.strengthLvl;
+			damage -= ((int) Random.Range (0, defenseLvl + 1) / 2);
+			if(damage < 0)
+				damage = 0;
 			curHealth -= damage;
-			Debug.Log("Hit for " + damage + "! " + curHealth + " health left!");
-			if(curHealth < 0){
+			GameObject.FindGameObjectWithTag("MessageManager").GetComponent<MessageManager>()
+				.createNewMessage(gameObject, damage.ToString(), Color.red);
+			if(curHealth <= 0){
 				curHealth = 0;
 				die();
 			}
 		}else{
-			Debug.Log("Dodged! Attacker rolled a " + attackerRoll + ", I rolled a " + myAgilRoll);
+			GameObject.FindGameObjectWithTag("MessageManager").GetComponent<MessageManager>()
+				.createNewMessage(gameObject, "Dodged!", Color.black);
 		}
-
-
 	}
 }

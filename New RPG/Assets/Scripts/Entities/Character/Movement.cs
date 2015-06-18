@@ -4,7 +4,7 @@ using System.Collections;
 public class Movement : MonoBehaviour {
 
 
-	float speed = 1f;
+	public float speed = 1f;
 	int directionFacing;
 	Rigidbody2D body;
 	Animator animator;
@@ -63,6 +63,7 @@ public class Movement : MonoBehaviour {
 	}
 
 	void jump(){
+		GetComponent<AudioSource> ().Play ();
 		Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		Vector2 diff = body.position - new Vector2(mousePos.x, mousePos.y);
 		if (diff.x < 0) {

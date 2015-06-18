@@ -17,6 +17,6 @@ public class MeleeAttack : MonoBehaviour {
 	public void attack(){
 		animator.SetBool ("isAttacking", true);
 
-		animator.SetInteger ("directionFacing", GetComponentInParent<Movement>().getDirectionFacing()); 		
+		animator.SetInteger ("directionFacing", GetComponentInParent<Movement>().getDirectionFacing());
 	}
 }

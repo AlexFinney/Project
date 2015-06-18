@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\Entities\Character\Player.cs" />
      <Compile Include="Assets\Scripts\Entities\Entity.cs" />
      <Compile Include="Assets\Scripts\Entities\Mobs\Hostile\AI\BasicHostileMobAI.cs" />
+     <Compile Include="Assets\Scripts\Entities\Mobs\Hostile\DeadMob.cs" />
      <Compile Include="Assets\Scripts\Entities\Mobs\Hostile\HostileMob.cs" />
      <Compile Include="Assets\Scripts\Entities\Mobs\Hostile\SmallSpider.cs" />
      <Compile Include="Assets\Scripts\GUI\FloatingMessage\FloatingMessage.cs" />

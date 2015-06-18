@@ -16,6 +16,7 @@ public class BasicHostileMobAI : MonoBehaviour {
 	
 	private Vector2 spawnPoint;
 	public float speed;
+	public bool jumping = false;
 	
 	// Use this for initialization
 	void Start () {
@@ -28,12 +29,20 @@ public class BasicHostileMobAI : MonoBehaviour {
 	void Update () {
 		if (target != null) {
 			float dist = Vector2.Distance(self.position, target.position);
-			if(dist > .5f){
+			if(dist > 5)
+				shouldMoveToSpawn = true;
+			else
+				shouldMoveToSpawn = false;
+			if(dist > .5f && !shouldMoveToSpawn){
 				animator.SetBool("moving",true);
 				directionToTarget = (target.position - self.position).normalized;
-				self.position = Vector2.Lerp(self.position, target.position, speed * Time.deltaTime);
+				self.position = Vector2.MoveTowards(self.position, target.position, speed * Time.deltaTime);
 			}else{
+				if(jumping)
+					jumping = false;
 				animator.SetBool("moving",false);
+				jumping = false;
+				speed = .2f;
 			}
 
 			Vector3 dir = target.transform.position - self.transform.position; 
@@ -45,7 +54,7 @@ public class BasicHostileMobAI : MonoBehaviour {
 			}
 
 		}else{
-			if(shouldMoveToSpawn){
+			if(shouldMoveToSpawn && !jumping){
 				animator.SetBool("moving",true);
 				directionToSpawn = (spawnPoint - self.position).normalized;
 				self.position = Vector2.Lerp(self.position, spawnPoint, Time.deltaTime * speed);
@@ -61,6 +70,32 @@ public class BasicHostileMobAI : MonoBehaviour {
 		}
 	}
 
+	void FixedUpdate(){
+		if(!jumping){
+			if (target != null) {
+				float dist = Vector2.Distance(self.position, target.position);
+
+				if (dist > 1) {
+					int val = Random.Range (0, 1000);
+					Debug.Log(val);
+					if(val < 10){
+						Debug.Log("jump is true");
+						jumping = true;
+						StartCoroutine(jump ());
+					}
+				}
+			}
+		}
+	}
+
+	IEnumerator jump(){
+		Debug.Log ("jump!!");
+		jumping = true;
+		speed = 0;
+		yield return new WaitForSeconds (1.0f);
+		speed = 2;
+	}
+
 
 	
 	void OnTriggerEnter2D(Collider2D other){
@@ -70,14 +105,7 @@ public class BasicHostileMobAI : MonoBehaviour {
 		}
 	}
 	
-	void OnTriggerExit2D(Collider2D other){
-		if (other.gameObject.tag.Equals ("Player")) {
-			if(target.Equals(other.attachedRigidbody)){
-				target = null;
-				shouldMoveToSpawn = true;
-			}
-		}
-	}
+
 	// Use this for initialization
 
 }
