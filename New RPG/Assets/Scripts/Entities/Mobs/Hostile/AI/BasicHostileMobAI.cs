@@ -7,7 +7,7 @@ public class BasicHostileMobAI : MonoBehaviour {
 	private Rigidbody2D self;
 	private Vector2 directionToTarget;
 	private Vector2 directionToSpawn;
-	public bool shouldMoveToSpawn = false;
+	private bool shouldMoveToSpawn = false;
 	public bool hasSideAnimations;
 	private Animator animator;
 
@@ -16,7 +16,10 @@ public class BasicHostileMobAI : MonoBehaviour {
 	
 	private Vector2 spawnPoint;
 	public float speed;
-	public bool jumping = false;
+	public float attackTime = 1.0f;
+	private bool jumping = false;
+	public int damage = 1;
+	private bool canAttack = true;
 	
 	// Use this for initialization
 	void Start () {
@@ -29,7 +32,7 @@ public class BasicHostileMobAI : MonoBehaviour {
 	void Update () {
 		if (target != null) {
 			float dist = Vector2.Distance(self.position, target.position);
-			if(dist > 5)
+			if(dist > 3)
 				shouldMoveToSpawn = true;
 			else
 				shouldMoveToSpawn = false;
@@ -43,6 +46,9 @@ public class BasicHostileMobAI : MonoBehaviour {
 				animator.SetBool("moving",false);
 				jumping = false;
 				speed = .2f;
+			}
+			if(canAttack && dist <= attackDistance){
+				StartCoroutine(attack());
 			}
 
 			Vector3 dir = target.transform.position - self.transform.position; 
@@ -77,9 +83,7 @@ public class BasicHostileMobAI : MonoBehaviour {
 
 				if (dist > 1) {
 					int val = Random.Range (0, 1000);
-					Debug.Log(val);
 					if(val < 10){
-						Debug.Log("jump is true");
 						jumping = true;
 						StartCoroutine(jump ());
 					}
@@ -88,8 +92,15 @@ public class BasicHostileMobAI : MonoBehaviour {
 		}
 	}
 
+	IEnumerator attack(){
+		canAttack = false;
+		Debug.Log ("attack!");
+		target.gameObject.GetComponent<Entity>().applyDamage(damage, gameObject.GetComponent<Entity>());
+		yield return new WaitForSeconds (attackTime);
+		canAttack = true;
+	}
+
 	IEnumerator jump(){
-		Debug.Log ("jump!!");
 		jumping = true;
 		speed = 0;
 		yield return new WaitForSeconds (1.0f);

@@ -13,6 +13,8 @@ public abstract class Entity : MonoBehaviour {
 	protected int magicLvl  {get; set;}
 	protected int secondsToRegain1HP = 5;
 
+	public AudioClip hurtSound;
+
 
 
 	void Start(){
@@ -41,7 +43,7 @@ public abstract class Entity : MonoBehaviour {
 		int attackerRoll = Random.Range (0, attacker.attackLevel + 1);
 
 		if(attackerRoll * 1.5 >= myAgilRoll){
-			GetComponent<AudioSource>().Play();
+			AudioSource.PlayClipAtPoint(hurtSound, gameObject.transform.position);
 			int bonus = attacker.strengthLvl + 8;
 			int maxDamage = Random.Range(1,bonus);
 			int damage = Random.Range(0, weaponDamage) + (int)1.5 * attacker.strengthLvl;
@@ -60,4 +62,14 @@ public abstract class Entity : MonoBehaviour {
 				.createNewMessage(gameObject, "Dodged!", Color.black);
 		}
 	}
+
+	public int getCurHealth(){
+		return curHealth;
+	}
+
+	public int getMaxHealth(){
+		return maxHealth;
+	}
+
+
 }

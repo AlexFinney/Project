@@ -16,6 +16,7 @@ public abstract class AbstractMeleeWeapon : AbstractItem {
 	public bool shouldRotateToStart = false;
 	protected SpriteRenderer renderer;
 	protected PolygonCollider2D hitBox;
+	protected ArrayList currentHittingMobs;
 
 
 

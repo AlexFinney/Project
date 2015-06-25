@@ -8,6 +8,7 @@ public class CopperGreatSword : AbstractMeleeWeapon {
 	void Start () {
 		renderer = GetComponent<SpriteRenderer> ();
 		hitBox = GetComponent<PolygonCollider2D>();
+		currentHittingMobs = new ArrayList ();
 
 		attackToWield = 3;
 		strengthToWield = 3;
@@ -31,9 +32,21 @@ public class CopperGreatSword : AbstractMeleeWeapon {
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag == "HostileMob") {
-			other.GetComponent<Entity>().applyDamage(damage, GetComponentInParent<Player>());
-			GetComponent<AudioSource>().Play();
+			HostileMob mob = (HostileMob) other.GetComponent<Entity>();
+			if(!currentHittingMobs.Contains(mob)){
+				currentHittingMobs.Add(mob);
+				other.GetComponent<Entity>().applyDamage(damage, GetComponentInParent<Player>());
+				GetComponent<AudioSource>().Play();
+			}
 		}
 
 	}
+
+	void OnTriggerExit2D(Collider2D other){
+		if (other.gameObject.tag == "HostileMob") {
+			currentHittingMobs.Remove((HostileMob) other.GetComponent<Entity>());
+		}
+	}
+
+
 }

@@ -29,6 +29,7 @@ public class FloatingMessage : MonoBehaviour {
 	public void startFloating(){
 		shouldStart = true;
 		GetComponent<GUIText> ().anchor = TextAnchor.MiddleCenter;
+		GetComponent<GUIText> ().fontSize = 30;
 	}
 
 	public void setStartingPosition(Transform transform){

@@ -1,6 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\HealthBar.cs">
+    <Files>
+      <File FileName="Assets\Scripts\GUI\HealthBar.cs" Line="45" Column="81" />
+      <File FileName="Assets\Scripts\Entities\Entity.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Entities\Mobs\Hostile\SmallSpider.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Entities\Mobs\Hostile\HostileMob.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

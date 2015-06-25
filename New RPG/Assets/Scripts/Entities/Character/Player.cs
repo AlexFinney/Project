@@ -13,7 +13,7 @@ public class Player : Entity{
 	MeleeAttack meleeAttack;
 
 	void Start(){
-		curHealth = maxHealth = 10;
+		curHealth = maxHealth = 30;
 		attackLevel = 3;
 		strengthLvl = 3;
 		defenseLvl = 3;
