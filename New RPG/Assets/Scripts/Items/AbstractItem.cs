@@ -2,8 +2,8 @@
 using System.Collections;
 
 public abstract class AbstractItem : MonoBehaviour {
-
-	public Sprite image; 
+	
+	bool canPickup = false;
 
 	// Use this for initialization
 	void Start () {
@@ -13,5 +13,13 @@ public abstract class AbstractItem : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public Sprite getImage(){
+		return GetComponent<SpriteRenderer> ().sprite;
+	}
+
+	public void setCanPickup(bool canPickup){
+		this.canPickup = canPickup;
 	}
 }

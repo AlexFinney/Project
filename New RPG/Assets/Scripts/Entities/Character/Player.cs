@@ -78,6 +78,10 @@ public class Player : Entity{
 		Debug.Log ("You have died :(");
 	}
 
+	public void addItemToInventory(AbstractItem item){
+		gameObject.GetComponentInChildren<Inventory> ().addItem(item);
+	}
+
 
 
 

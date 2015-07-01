@@ -1,11 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GUI\HealthBar.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Inventory.cs">
     <Files>
-      <File FileName="Assets\Scripts\GUI\HealthBar.cs" Line="45" Column="81" />
-      <File FileName="Assets\Scripts\Entities\Entity.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Entities\Mobs\Hostile\SmallSpider.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Entities\Mobs\Hostile\HostileMob.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Entities\Character\Player.cs" Line="82" Column="64" />
+      <File FileName="Assets\Inventory.cs" Line="56" Column="7" />
+      <File FileName="Assets\Scripts\HarvestableResources\HarvestableResource.cs" Line="51" Column="41" />
+      <File FileName="Assets\Scripts\Items\AbstractItem.cs" Line="19" Column="49" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

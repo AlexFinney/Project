@@ -58,10 +58,15 @@
      <Compile Include="Assets\Scripts\GUI\FloatingMessage\FloatingMessage.cs" />
      <Compile Include="Assets\Scripts\GUI\FloatingMessage\MessageManager.cs" />
      <Compile Include="Assets\Scripts\GUI\HealthBar.cs" />
+     <Compile Include="Assets\Scripts\GUI\Inventory\Inventory.cs" />
+     <Compile Include="Assets\Scripts\GUI\Inventory\InventorySlot.cs" />
+     <Compile Include="Assets\Scripts\HarvestableResources\HarvestableResource.cs" />
      <Compile Include="Assets\Scripts\Items\AbstractItem.cs" />
      <Compile Include="Assets\Scripts\Items\Weapons\AbstractMeleeWeapon.cs" />
      <Compile Include="Assets\Scripts\Items\Weapons\Melee\CopperGreatSword.cs" />
      <Compile Include="Assets\Scripts\Misc\FixRotation.cs" />
+     <Compile Include="Assets\Scripts\Ore\CopperVein.cs" />
+     <Compile Include="Assets\Scripts\Ore\IronVein.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\SortingLayerExposed.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\TileAnimator.cs" />
      <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\TiledMap.cs" />
